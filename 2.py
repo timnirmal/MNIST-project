@@ -62,4 +62,42 @@ accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 print("Accuracy : ", accuracy.numpy())
 
 
-#
+# Confusion Matrix
+# Calculate the confusion matrix
+confusion_matrix = tf.math.confusion_matrix(y_test_classes, predicted_classes)
+# Print the confusion matrix
+print("Confusion Matrix : ", confusion_matrix)
+
+
+# Plot the confusion matrix
+import matplotlib.pyplot as plt
+import seaborn as sn
+
+
+# Set the figure size
+plt.figure(figsize=(10, 10))
+
+
+# Plot the confusion matrix
+sn.heatmap(confusion_matrix, annot=True, cmap="Blues", fmt="g")
+
+
+# Set the labels
+plt.xlabel("Predicted Class")
+plt.ylabel("True Class")
+
+
+# Set the title
+plt.title("Confusion Matrix")
+
+
+# Show the plot
+plt.show()
+
+################################################################################
+
+
+# show image from the test set
+plt.imshow(x_test[0].reshape(28, 28), cmap='gray')
+plt.show()
+
